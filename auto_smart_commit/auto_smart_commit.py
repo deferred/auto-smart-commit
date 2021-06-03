@@ -21,7 +21,7 @@ def current_git_branch_name() -> str:
 
 
 def extract_jira_issue_key(message: str) -> Optional[str]:
-    project_key, issue_number = r"[A-Z]{2,}", r"[0-9]+"
+    project_key, issue_number = r"[A-Z0-9]{2,}", r"[0-9]+"
     match = re.search(f"{project_key}-{issue_number}", message)
     if match:
         return match.group(0)
@@ -119,4 +119,4 @@ def main() -> NoReturn:
 
 
 if __name__ == "__main__":
-    main()
+    exit(main())
